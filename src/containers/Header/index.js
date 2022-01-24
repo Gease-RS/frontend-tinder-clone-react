@@ -9,11 +9,11 @@ const HeaderContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   z-index: 100;
-  border-bottom: 1px solid #f9f9f900;
+  border-bottom: 1px solid #f4f4f4;
 `;
 
 const HeaderLogo = styled.div`
-  padding-top: 10px;
+  padding: 10px;
   height: 40px;
   width: 40px;
 `;
@@ -35,13 +35,17 @@ const HeaderIconRight = styled.div`
 `;
 
 export default function Header() {
+  function refreshPage() {
+    window.location.reload();
+  }
+
   return (
     <HeaderContainer>
       <HeaderIconLeft>
         <FontAwesomeIcon icon={faUser} />
       </HeaderIconLeft>
       <HeaderLogo>
-        <img src={Tinder} alt="logo" />
+        <img onClick={refreshPage} src={Tinder} alt="logo" />
       </HeaderLogo>
       <HeaderIconRight>
         <FontAwesomeIcon icon={faComments} />

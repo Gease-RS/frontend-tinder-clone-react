@@ -1,11 +1,11 @@
 ## Available Scripts
 
 ```bash
-npm install @mui/material
+npm install --save @fortawesome/free-solid-svg-icons
 ```
 
 ```bash
-npm install @mui/icons-material
+npm install --save @fortawesome/react-fontawesome
 ```
 
 ```bash
@@ -14,4 +14,12 @@ npm install @emotion/react
 
 ```bash
 npm install @emotion/styled
+```
+
+```bash
+npm install react-tinder-card
+```
+
+```bash
+npm i faker
 ```
