@@ -21,5 +21,5 @@ npm install react-tinder-card
 ```
 
 ```bash
-npm i faker
+npm install axios
 ```

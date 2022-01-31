@@ -1,7 +1,7 @@
-import { faKeyboard } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import TinderCardSwipe from "react-tinder-card";
 import styled from "styled-components";
+import api from "../../api";
 
 const TCard = styled.div`
   position: relative;
@@ -38,24 +38,16 @@ const CardTitle = styled.h3`
 `;
 
 export default function TinderCard() {
-  const [people, setPeople] = useState([
-    {
-      name: "Juliany Milles",
-      url: "https://i.pravatar.cc/300?img=22",
-    },
-    {
-      name: "John Doe",
-      url: "https://i.pravatar.cc/300?img=52",
-    },
-    {
-      name: "Gabrielle Sellesdion",
-      url: "https://i.pravatar.cc/300?img=45",
-    },
-    {
-      name: "Leandry Schutz Lima",
-      url: "https://i.pravatar.cc/300?img=3",
-    },
-  ]);
+  const [peoples, setPeoples] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await api.get("/peoples");
+      setPeoples(response.data);
+    }
+
+    fetchData();
+  }, []);
 
   const swiped = (direction, nameToDelete) => {
     console.log("removing: " + nameToDelete);
@@ -68,8 +60,8 @@ export default function TinderCard() {
   return (
     <CardContent>
       <TinderCardsCardContainer>
-        {people.map((person) => (
-          <Swipe key={person.name}>
+        {peoples.map((person) => (
+          <Swipe key={person.id}>
             <TinderCardSwipe
               preventSwipe={["up", "down"]}
               onSwipe={(dir) => swiped(dir, person.name)}
