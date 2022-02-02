@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import TinderCardSwipe from "react-tinder-card";
+
 import styled from "styled-components";
 import api from "../../api";
 
 const TCard = styled.div`
-  position: relative;
   background-color: #fff;
   width: 360px;
   padding: 20px;
@@ -14,11 +14,15 @@ const TCard = styled.div`
   border-radius: 20px;
   background-size: cover;
   background-position: center;
+
+  @media (max-width: 400px) {
+    width: 300px;
+  }
 `;
 const TinderCardsCardContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 10vh;
+  margin-top: 8vh;
 `;
 
 const Swipe = styled.div`
@@ -37,15 +41,14 @@ const CardTitle = styled.h3`
   color: #fff;
 `;
 
-export default function TinderCard() {
+function App() {
   const [peoples, setPeoples] = useState([]);
 
   useEffect(() => {
-    async function fetchData() {
-      const response = await api.get("/peoples");
-      setPeoples(response.data);
-    }
-
+    const fetchData = async () => {
+      const result = await api.get(`/peoples`);
+      setPeoples(result.data);
+    };
     fetchData();
   }, []);
 
@@ -59,9 +62,9 @@ export default function TinderCard() {
 
   return (
     <CardContent>
-      <TinderCardsCardContainer>
-        {peoples.map((person) => (
-          <Swipe key={person.id}>
+      {peoples.map((person) => (
+        <TinderCardsCardContainer>
+          <Swipe key={person._id}>
             <TinderCardSwipe
               preventSwipe={["up", "down"]}
               onSwipe={(dir) => swiped(dir, person.name)}
@@ -72,8 +75,10 @@ export default function TinderCard() {
               </TCard>
             </TinderCardSwipe>
           </Swipe>
-        ))}
-      </TinderCardsCardContainer>
+        </TinderCardsCardContainer>
+      ))}
     </CardContent>
   );
 }
+
+export default App;

@@ -11,19 +11,28 @@ import styled from "styled-components";
 
 const SwipeButtonContainer = styled.div`
   position: fixed;
-  bottom: 5vh;
+  bottom: 1vh;
   display: flex;
-  width: 90%;
+  width: 100%;
   justify-content: space-evenly;
+
+  @media (max-width: 400px) {
+    bottom: 5vh;
+  }
 `;
 
 const SwipeButtonsIcon = styled.div`
-  background-color: #f8f8f8;
-  box-shadow: -1 4px 20px -6px rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  box-shadow: 0 5px 5px 0px rgba(0, 0, 0, 0.1);
 `;
 
 const SwipeButtonRepeat = styled.div`
-  padding: 3vw;
   color: blue !important;
 `;
 
@@ -51,35 +60,35 @@ const SwipeButtonLightning = styled.div`
 export default function SwipeButton() {
   return (
     <SwipeButtonContainer>
-      <SwipeButtonRepeat>
-        <SwipeButtonsIcon>
+      <SwipeButtonsIcon>
+        <SwipeButtonRepeat>
           <FontAwesomeIcon icon={faReply} />
-        </SwipeButtonsIcon>
-      </SwipeButtonRepeat>
+        </SwipeButtonRepeat>
+      </SwipeButtonsIcon>
 
-      <SwipeButtonClose>
-        <SwipeButtonsIcon>
+      <SwipeButtonsIcon>
+        <SwipeButtonClose>
           <FontAwesomeIcon icon={faTimes} />
-        </SwipeButtonsIcon>
-      </SwipeButtonClose>
+        </SwipeButtonClose>
+      </SwipeButtonsIcon>
 
-      <SwipeButtonFavorite>
-        <SwipeButtonsIcon>
+      <SwipeButtonsIcon>
+        <SwipeButtonFavorite>
           <FontAwesomeIcon icon={faHeart} />
-        </SwipeButtonsIcon>
-      </SwipeButtonFavorite>
+        </SwipeButtonFavorite>
+      </SwipeButtonsIcon>
 
-      <SwipeButtonStar>
-        <SwipeButtonsIcon>
+      <SwipeButtonsIcon>
+        <SwipeButtonStar>
           <FontAwesomeIcon icon={faStar} />
-        </SwipeButtonsIcon>
-      </SwipeButtonStar>
+        </SwipeButtonStar>
+      </SwipeButtonsIcon>
 
-      <SwipeButtonLightning>
-        <SwipeButtonsIcon>
+      <SwipeButtonsIcon>
+        <SwipeButtonLightning>
           <FontAwesomeIcon icon={faBolt} />
-        </SwipeButtonsIcon>
-      </SwipeButtonLightning>
+        </SwipeButtonLightning>
+      </SwipeButtonsIcon>
     </SwipeButtonContainer>
   );
 }
