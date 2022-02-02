@@ -1,6 +1,6 @@
 <div align="center">
   <p align="center">
-    <img src="src/assets/img/mock-tinder.png" width="680" height="290" alt="React Cars App" />
+    <img src="src/assets/img/mockup-mobile.png" width="830" height="305" alt="Tinder Cloner" />
   </p>
  <h1>Tinder Clone</h1>
  <h3>Projeto em Reactjs responsivo para mobile.<h3>
